@@ -1,0 +1,422 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300&family=Gilda+Display&display=swap");
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-size: 17x;
+  font-weight: 550;
+  line-height: 1.75em;
+  color: #666;
+  /* font-family: 'Montserrat', sans-serif; */
+}
+.bluecourt {
+  color: #00d4ff;
+}
+.logo {
+  font-family: "Gilda Display", serif;
+}
+.letterspace {
+  letter-spacing: 2px;
+}
+.letterspace2 {
+  letter-spacing: 6px;
+}
+.sitecolor {
+  color: #b59469;
+}
+.sitebackcolor {
+  background-color: #b59469;
+}
+/* navigation bar */
+/* navigation bar */
+/* navigation bar */
+.cursorpointer {
+  cursor: pointer;
+}
+.nvlnk:hover {
+  color: orange;
+  transition: all ease-in 0.2s;
+  cursor: pointer;
+}
+.nav-item > a:hover {
+  color: orange;
+  transition: all ease-in 0.2s;
+  cursor: pointer;
+}
+.dropdown-menu {
+  background-color: #b59469;
+}
+
+/* slider */
+/* slider */
+/* slider */
+.star {
+  width: 30%;
+  transition: all ease-in 0.3s;
+}
+.sliderbtn {
+  color: orange;
+  font-size: small;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 0;
+  margin-bottom: 100px;
+}
+.scomment {
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.863),
+    4px 4px 5px rgba(0, 0, 0, 0.719);
+}
+/* checkin */
+/* checkin */
+/* checkin */
+.checkinbox {
+  background-color: rgba(181, 129, 40, 0.651);
+}
+.chkn > input {
+  width: 100%;
+  padding: 15px 5px;
+  outline: none;
+  border: none;
+  margin: 0 1px 1px 0;
+}
+.checkinbtn {
+  color: white;
+  background-color: #b59469;
+  transition: all ease-in 0.2s;
+  cursor: pointer;
+}
+.checkinbtn:hover {
+  background-color: #000;
+}
+.checkin {
+  background-image: url("/calendar.png");
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: 90%;
+}
+::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  padding: 10px;
+  cursor: pointer;
+  margin-right: 14px;
+}
+/* rooms & suits */
+/* rooms & suits */
+/* rooms & suits */
+a {
+  text-decoration: none;
+  color: white;
+}
+/* uicard */
+/* uicard */
+/* uicard */
+
+.roomsimg {
+  max-width: 100%;
+}
+.ui-card {
+  width: 400px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+  background: radial-gradient(#111 50%, #000 100%);
+}
+
+.ui-card img {
+  transform: scale(1.3);
+  transition: all 0.3s ease-out;
+}
+.ui-card:hover img {
+  transform: scale(1.6) translateY(-30px);
+  opacity: 0.7;
+}
+.ui-card .description {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 15px;
+  width: 100%;
+  /* text-align: center; */
+  color: #fff;
+  font-size: 18px;
+}
+
+.ui-card > .desc {
+  transform: translateY(45px);
+  /* opacity: 0; */
+  transition: all 0.3s ease-out;
+}
+.ui-card:hover .desc {
+  transform: translateY(0);
+  transition: all 0.2s ease-out;
+  background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+}
+
+.rtype::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 10%;
+  top: 86px;
+  left: 15px;
+  background-color: rgb(82, 79, 79);
+  transition: all 0.5s ease-in;
+}
+.ui-card:hover .rtype::after {
+  width: 95%;
+}
+.roomicons > i {
+  margin: 0 5px;
+}
+
+/* extra services */
+/* extra services */
+/* extra services */
+.service {
+  /* height: 550px; */
+  background-color: #222222;
+}
+/* hovli */
+/* hovli */
+/* hovli */
+.hovli {
+  background-image: url("/yard.png");
+  /* background-image: linear-gradient(
+      rgba(60, 90, 151, 0),
+      rgba(255, 255, 255, 0)
+    ),
+    url("/yard.png"); */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 550px;
+}
+
+/* facilities */
+/* facilities */
+/* facilities */
+.facilityicons {
+  color: #b59469;
+}
+.card {
+  width: 300px;
+}
+
+div::selection,
+h5::selection,
+h4::selection,
+h3::selection,
+h2::selection,
+h1::selection,
+p::selection,
+img::selection,
+a::selection {
+  background-color: #b59469;
+  color: white;
+}
+
+.footer {
+  /* height: 500px; */
+  background-color: #222222;
+}
+button {
+  border: none;
+  outline: none;
+}
+.email {
+  /* border: 2px; */
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: 2px solid #b59469;
+}
+.socialsite {
+  cursor: pointer;
+}
+.explorediv > div:hover {
+  cursor: pointer;
+  margin-left: 3px;
+  transition: all ease-in 0.2s;
+}
+.copyright {
+  background-color: #1e1e1e;
+  font-size: small;
+}
+
+/* room specifics */
+/* room specifics */
+/* room specifics */
+.roombg {
+  background-color: #f1e4c046;
+  padding: 25px 25px;
+}
+.checkicon {
+  margin-right: 15px;
+}
+
+/* contact */
+/* contact */
+/* contact */
+.contact {
+  height: 450px;
+  background-image: url("/2.png");
+  background-attachment: fixed;
+  background-position: bottom;
+  /* transform: scale(1.2); */
+}
+.contactext {
+  margin: 150px 0;
+}
+.contactinside {
+  padding-left: 10%;
+  padding-top: 20%;
+}
+.contactinput {
+  margin: 15px 10px 15px 0;
+  border: none;
+  /* background-color: #f8f9fa; */
+  padding: 5px;
+  outline: none;
+  border-bottom: 1px solid #b59469;
+  transition: all ease-in 0.19s;
+}
+.contactinput:focus {
+  box-shadow: 0 0 5px 1px #666;
+}
+/* gallery */
+/* gallery */
+/* gallery */
+.gallery {
+  height: 450px;
+  background-image: url("/reg.jpg");
+  background-attachment: fixed;
+  background-position: bottom;
+}
+.galleryimg {
+  width: 100%;
+  margin-bottom: 15px;
+  cursor: zoom-in;
+}
+
+/* chatbox */
+/* chatbox */
+/* chatbox */
+.chatbox {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #b59469;
+  border-radius: 25px 25px 0 25px;
+  border: 1px solid #ccc;
+  padding: 7px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+/* Chat container */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f0f0;
+  font-size: 13px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 15px;
+}
+.chattext {
+  display: flex;
+  flex-direction: column;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.chat-message {
+  background-color: #fff;
+  width: max-content;
+  margin-bottom: 10px;
+  padding: 0 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chat-message.dispatch {
+  align-self: flex-end;
+  border-radius: 8px 8px 0 8px;
+  background-color: #4caf50; /* Green color for sent messages */
+  color: #fff;
+}
+
+.chat-message.client {
+  align-self: flex-start;
+  border-radius: 8px 8px 8px 0;
+  color: #fff;
+  background-color: #3165c5; /* Light gray color for received messages */
+}
+.chattext {
+  padding: 3px;
+  overflow-y: scroll; /* Enable vertical scrolling */
+}
+.chattext::-webkit-scrollbar {
+  width: 6px;
+}
+.chattext::-webkit-scrollbar-thumb {
+  background-color: #b59469;
+  border-radius: 15px;
+}
+.chattext::-webkit-scrollbar-thumb:hover {
+  background-color: #887a67;
+}
+
+/* zoom  */
+.confirmation-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  z-index: 9999; /* Ensure it's on top of other content */
+}
+/* ///////////////////////////////////// */
+@media only screen and (min-width: 1200px) {
+  .sliderbtn {
+    margin-bottom: 250px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .whitecolor {
+    color: #fff;
+  }
+  .facitems > div {
+    width: 95%;
+  }
+  .hdr {
+    background-color: #000;
+  }
+}
+@media only screen and (min-width: 768px) {
+  body {
+    background-color: #f8f5f0;
+  }
+
+  .hdr {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+  .ui-card > .uper {
+    transform: translateY(73px);
+    /* opacity: 0; */
+    transition: all 0.3s ease-out;
+  }
+}

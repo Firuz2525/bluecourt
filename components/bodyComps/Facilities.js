@@ -67,8 +67,7 @@ export default function Facilities() {
                 <i className="facilityicons fas fa-utensils h1 my-3"></i>
                 <h4 className="card-title logo text-dark">Breakfast</h4>
                 <p className="card-text">
-                  We offer five different restaurants according to your choice
-                  of food of various nationality.
+                  Taste a fresh local breakfast daily.
                 </p>
               </div>
             </div>

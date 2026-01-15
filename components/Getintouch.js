@@ -49,10 +49,11 @@ const Getintouch = () => {
             <div className="col-6">
               <div className="h3 logo text-dark">BLUECOURT HOTEL</div>
               <p>
-                Hotel ut nisl quam nestibulum ac quam nec odio elementum sceisue
-                the aucan ligula. Orci varius natoque penatibus et magnis dis
-                parturient monte nascete ridiculus mus nellentesque habitant
-                morbine.
+                Discover a sanctuary where ancient heritage meets modern luxury.
+                Located just steps from the historic heart of Samarkand,
+                Bluecourt Hotel offers a unique boutique experience defined by
+                traditional Silk Road craftsmanship, intricate hand-carved
+                details, and world-class hospitality
               </p>
               <div className="d-flex align-items-center">
                 <i className="fas fa-phone h1 checkicon sitecolor"></i>
@@ -97,16 +98,6 @@ const Getintouch = () => {
                     border: "1px solid #ddd",
                   }}
                 >
-                  {/* <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d213.33705886665715!2d66.98030394170758!3d39.65232679010624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f30!5e0!3m2!1sen!2s!4v1768483233349!5m2!1sen!2s"
-                    width="100%"
-                    height="500"
-                    style={{ border: 0 }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Hotel Location Map"
-                  ></iframe> */}
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d767.9707785023768!2d66.97984426955257!3d39.65234503078109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMznCsDM5JzA4LjQiTiA2NsKwNTgnNDkuOCJF!5e0!3m2!1sen!2sus!4v1768484258588!5m2!1sen!2sus"
                     width="100%"

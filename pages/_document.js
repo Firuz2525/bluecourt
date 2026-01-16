@@ -4,8 +4,8 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <title>Atmosphere</title>
-        <meta name="description" content="five star hotel" />
+        <title>Bluecourt</title>
+        <meta name="description" content="Bluecourt hotel" />
 
         <meta
           name="viewport"
@@ -14,7 +14,7 @@ export default function Document() {
         />
         <meta
           name="keywords"
-          content="hotel, samarkand, samarkand hotel, reghotel, hostel, five star hotel"
+          content="hotel, samarkand, samarkand hotel, bluecourt, bluecourt hotel, hostel, five star hotel"
         />
         <link rel="icon" type="image/x-icon" href="/favicon.jpg"></link>
         <link

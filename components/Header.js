@@ -16,9 +16,9 @@ const Header = () => {
           <header className="d-flex justify-content-between py-3 border-bottom">
             {/* LOGO */}
             <Link href="/" locale={locale}>
-              <span className="bluecourt cursorpointer d-flex align-items-center mb-3 mb-md-0 me-md-auto fs-4 logo">
+              <h2 className="bluecourt cursorpointer fw-bolder d-flex align-items-center mb-3 mb-md-0 me-md-auto fs-4 logo">
                 BLUECOURT
-              </span>
+              </h2>
             </Link>
 
             <nav

@@ -3,8 +3,10 @@ import Loading from "../Loading";
 import { v4 } from "uuid";
 import sendMessageToTelegram from "../msgToBot";
 import { PostingData } from "../firebase/getPost";
+import { useTranslations } from "next-intl"; // Added import
 
 export default function Checkinbox() {
+  const t = useTranslations("Checkinbox"); // Initialize translations
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [child, setChild] = useState("");
@@ -22,7 +24,7 @@ export default function Checkinbox() {
       contact === "" ||
       adult === ""
     ) {
-      alert("Complete name and contact please!");
+      alert(t("alertIncomplete")); // Translated alert
       return;
     }
     if (child === "") {
@@ -31,7 +33,7 @@ export default function Checkinbox() {
     const firstDay = new Date(from);
     const lastDay = new Date(to);
     if (firstDay > lastDay) {
-      alert("Pick the date correctly please!");
+      alert(t("alertDates")); // Translated alert
       return;
     }
     const order = {
@@ -47,7 +49,7 @@ export default function Checkinbox() {
     setLoading(true);
     try {
       PostingData("checkins", order);
-      alert("Successfully checked in, we will contact you soon!");
+      alert(t("alertSuccess")); // Translated alert
       setFrom("");
       setTo("");
       setChild("");
@@ -69,8 +71,8 @@ export default function Checkinbox() {
       <div id="checkinbox" className="checkinbox">
         <div className="container-md py-5">
           <div className="row">
-            <div className="letterspace text-white">CHECK NOW</div>
-            <div className="display-5 logo text-light">Search Rooms</div>
+            <div className="letterspace text-white">{t("checkNow")}</div>
+            <div className="display-5 logo text-light">{t("searchRooms")}</div>
           </div>
           {/* <Toast /> */}
           {loading ? (
@@ -82,7 +84,7 @@ export default function Checkinbox() {
                   type="date"
                   id="checkin"
                   className="checkin"
-                  placeholder="CHECK-IN: "
+                  placeholder={t("placeholderCheckIn")}
                   name="date"
                   value={from}
                   onChange={(e) => setFrom(e.target.value)}
@@ -91,7 +93,7 @@ export default function Checkinbox() {
                   type="date"
                   id="checkout"
                   className="checkin"
-                  placeholder="CHECK-OUT: "
+                  placeholder={t("placeholderCheckOut")}
                   name="date"
                   value={to}
                   onChange={(e) => setTo(e.target.value)}
@@ -99,7 +101,7 @@ export default function Checkinbox() {
                 <input
                   type="number"
                   id="adults"
-                  placeholder=" ADULTS: "
+                  placeholder={t("placeholderAdults")}
                   name="number"
                   value={adult}
                   onChange={(e) => {
@@ -113,7 +115,7 @@ export default function Checkinbox() {
                 <input
                   type="number"
                   id="children"
-                  placeholder=" CHILDREN: "
+                  placeholder={t("placeholderChildren")}
                   name="number"
                   value={child}
                   onChange={(e) => {
@@ -129,13 +131,13 @@ export default function Checkinbox() {
                   type="button"
                   id="checkout"
                   className="checkinbtn"
-                  value="CHECK NOW"
+                  value={t("checkNowBtn")}
                   name="number"
                   onClick={() => {
                     if (from !== "" || to !== "" || adult !== "") {
                       setShowInput(!showInput);
                     } else {
-                      alert("Complete the dates and number of people please!");
+                      alert(t("alertDatesAndPeople")); // Translated alert
                     }
                   }}
                 />
@@ -145,7 +147,7 @@ export default function Checkinbox() {
                   <input
                     type="text"
                     id="name"
-                    placeholder=" Name: "
+                    placeholder={t("placeholderName")}
                     name="number"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -153,7 +155,7 @@ export default function Checkinbox() {
                   <input
                     type="text"
                     id="contact"
-                    placeholder=" Email or Phone#: "
+                    placeholder={t("placeholderContact")}
                     name="number"
                     value={contact}
                     onChange={(e) => setContact(e.target.value)}
@@ -162,7 +164,7 @@ export default function Checkinbox() {
                     type="button"
                     id="confirm"
                     className="checkinbtn"
-                    value="CONFIRM"
+                    value={t("confirmBtn")}
                     name="confirm"
                     onClick={handleSubmit}
                   />

@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function Slider() {
+  const t = useTranslations("Slider");
+
   return (
     <>
       <div
@@ -31,47 +34,42 @@ export default function Slider() {
           ></button>
         </div>
         <div className="carousel-inner">
+          {/* Slide 1 */}
           <div className="carousel-item active">
             <img src="./18.jpg" className="d-block w-100" alt="..." />
             <div className="carousel-caption mb-5 d-none d-md-block">
-              {/* <img className="star" src="./star.png" alt="name" /> */}
-
-              <h1 className="logo letterspace scomment">
-                ENJOY THE BEST MOMENTS OF LIFE
-              </h1>
+              <h1 className="logo letterspace scomment">{t("slide1Title")}</h1>
               <Link href="/rooms">
                 <button className="btn btn-outline-dark sliderbtn">
-                  ROOMS & SUITS
+                  {t("roomsBtn")}
                 </button>
               </Link>
             </div>
           </div>
+
+          {/* Slide 2 */}
           <div className="carousel-item">
             <img src="./2.jpg" className="d-block w-100" alt="..." />
             <div className="carousel-caption mb-5 d-none d-md-block">
-              {/* <img className="star" src="./star.png" alt="name" /> */}
-              <p>UNIQUE PLACE TO RELAX & ENJOY</p>
-              <h1 className="logo letterspace scomment">
-                THE PERFECT BASE FOR YOU
-              </h1>
+              <p>{t("slide2Sub")}</p>
+              <h1 className="logo letterspace scomment">{t("slide2Title")}</h1>
               <Link href="/rooms">
                 <button className="btn btn-outline-dark sliderbtn">
-                  ROOMS & SUITS
+                  {t("roomsBtn")}
                 </button>
               </Link>
             </div>
           </div>
+
+          {/* Slide 3 */}
           <div className="carousel-item">
             <img src="./14.jpg" className="d-block w-100" alt="..." />
             <div className="carousel-caption mb-5 d-none d-md-block">
-              {/* <img className="star" src="./star.png" alt="name" /> */}
-              <p>THE ULTIMATE LUXURY EXPERIENCE</p>
-              <h1 className="logo letterspace scomment">
-                ENJOY A LUXURY EXPERIENCE
-              </h1>
+              <p>{t("slide3Sub")}</p>
+              <h1 className="logo letterspace scomment">{t("slide3Title")}</h1>
               <Link href="/rooms">
                 <button className="btn btn-outline-dark sliderbtn">
-                  ROOMS & SUITS
+                  {t("roomsBtn")}
                 </button>
               </Link>
             </div>

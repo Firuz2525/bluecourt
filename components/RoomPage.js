@@ -1,7 +1,10 @@
 import Link from "next/link";
 import React from "react";
+import { useTranslations } from "next-intl";
 
 const RoomPage = () => {
+  const t = useTranslations("RoomPage");
+
   return (
     <>
       <div
@@ -33,100 +36,97 @@ const RoomPage = () => {
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src="./junior1.jpg" className="d-block w-100" alt="..." />
+            <img
+              src="./junior1.jpg"
+              className="d-block w-100"
+              alt="Junior Suite 1"
+            />
           </div>
           <div className="carousel-item">
-            <img src="./junior2.jpg" className="d-block w-100" alt="..." />
+            <img
+              src="./junior2.jpg"
+              className="d-block w-100"
+              alt="Junior Suite 2"
+            />
           </div>
           <div className="carousel-item">
-            <img src="./junior3.jpg" className="d-block w-100" alt="..." />
+            <img
+              src="./junior3.jpg"
+              className="d-block w-100"
+              alt="Junior Suite 3"
+            />
           </div>
         </div>
       </div>
       <div className="roombg">
         <div className="container-md m-5">
-          <div className="letterspace2">THE REG HOTEL</div>
-          <div className="display-5 logo text-dark">Junior Site</div>
+          <div className="letterspace2">BLUECOURT HOTEL</div>
+          <div className="display-5 logo text-dark">{t("juniorSuite")}</div>
           <div className="row d-md-flex flex-column flex-sm-row justify-content-between">
             <div className="col-7">
-              <p className="my-3">
-                lorem ac erat suscipit bibendum nulla facilisi. Sedeuter nunc
-                volutpat miss sapien vel conseyen turpeutionyer masin libero
-                sevenion vusetion viventa augue sit amet hendrerit vestibulum.
-                Duisteyerion venenatis lacus gravida eros ut turpis interdum
-                ornare.
-              </p>
-              <p className="my-4">
-                Interdum et malesu they adamale fames ac anteipsu pimsine
-                faucibus curabitur arcu site feugiat in tortor in, volutpat
-                sollicitudin libero. Hotel non lorem acer suscipit bibendum
-                vulla facilisi nedeuter nunc volutpa mollis sapien velet
-                conseyer turpeutionyer masin libero sempe mollis.
-              </p>
+              <p className="my-3">{t("description1")}</p>
+              <p className="my-4">{t("description2")}</p>
               <div className="row">
                 <div className="col">
-                  <h3 className="logo">Check-in</h3>
+                  <h3 className="logo">{t("checkIn")}</h3>
                   <p>
-                    <i className="fas fa-check checkicon"></i> Check-in from
-                    9:00 AM - anytime
+                    <i className="fas fa-check checkicon"></i>{" "}
+                    {t("checkInTime")}
                   </p>
                   <p>
-                    <i className="fas fa-check checkicon"></i> Early check-in
-                    subject to availability
+                    <i className="fas fa-check checkicon"></i>{" "}
+                    {t("earlyCheckIn")}
                   </p>
                 </div>
                 <div className="col">
-                  <h3 className="logo">Check-out</h3>
+                  <h3 className="logo">{t("checkOut")}</h3>
                   <p>
-                    <i className="fas fa-check checkicon"></i> Check-out before
-                    noon
+                    <i className="fas fa-check checkicon"></i>{" "}
+                    {t("checkOutTime")}
                   </p>
                   <p>
-                    <i className="fas fa-check checkicon"></i> Express check-out
+                    <i className="fas fa-check checkicon"></i>{" "}
+                    {t("expressCheckOut")}
                   </p>
                 </div>
-                <h3 className="logo">Special check-in instructions</h3>
-                <p>
-                  Guests will receive an email 5 days before arrival with
-                  check-in instructions; front desk staff will greet guests on
-                  arrival For more details, please contact the property using
-                  the information on the booking confirmation.
-                </p>
-                <h3 className="logo">Pets</h3>
-                <p>Pets are not allowed</p>
-                <h3 className="logo">Children and extra beds</h3>
-                <p>
-                  Children are welcome Kids stay free! Children stay free when
-                  using existing bedding; children may not be eligible for
-                  complimentary breakfast Rollaway/extra beds are available for
-                  $ 10 per day.
-                </p>
+                <h3 className="logo">{t("specialInstructionsTitle")}</h3>
+                <p>{t("specialInstructionsDesc")}</p>
+                <h3 className="logo">{t("pets")}</h3>
+                <p>{t("petsDesc")}</p>
+                <h3 className="logo">{t("childrenTitle")}</h3>
+                <p>{t("childrenDesc")}</p>
               </div>
             </div>
             <div className="col-4">
-              <h3 className="logo">Amenities</h3>
+              <h3 className="logo">{t("amenities")}</h3>
               <p>
-                <i className="fas fa-users checkicon"></i>1-2 Person
+                <i className="fas fa-users checkicon"></i>
+                {t("capacity")}
               </p>
               <p>
-                <i className="fas fa-wifi checkicon"></i>Free Wifi
+                <i className="fas fa-wifi checkicon"></i>
+                {t("freeWifi")}
               </p>
               <p>
-                <i className="fas fa-ruler checkicon"></i>200 sqft room
+                <i className="fas fa-ruler checkicon"></i>
+                {t("roomSize")}
               </p>
               <p>
-                <i className="fas fa-utensils checkicon"></i>Breakfast
+                <i className="fas fa-utensils checkicon"></i>
+                {t("breakfast")}
               </p>
               <p>
-                <i className="fas fa-grip-lines checkicon"></i>Towels
+                <i className="fas fa-grip-lines checkicon"></i>
+                {t("towels")}
               </p>
               <p>
-                <i className="fas fa-swimmer checkicon"></i>Swimming Pool
+                <i className="fas fa-swimmer checkicon"></i>
+                {t("pool")}
               </p>
             </div>
           </div>
           <Link href="/">
-            <button className="h3 p-3 checkinbtn">CHECK NOW</button>
+            <button className="h3 p-3 checkinbtn">{t("checkNow")}</button>
           </Link>
         </div>
       </div>

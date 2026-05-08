@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 import sendMessageToTelegram from "./msgToBot";
+import { useTranslations } from "next-intl";
 
 const Getintouch = () => {
+  const t = useTranslations("GetInTouch");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -19,76 +21,60 @@ const Getintouch = () => {
       [name]: value,
     }));
   };
+
   const handleMsgToBot = () => {
-    console.log();
     sendMessageToTelegram(
-      `get In Touch: ${formData.name}, ${formData.email}, ${formData.number}, ${formData.subject}: ${formData.message}`
+      `Get In Touch: ${formData.name}, ${formData.email}, ${formData.number}, ${formData.subject}: ${formData.message}`
     );
   };
+
   return (
     <>
-      {/* <!-- header --> */}
       <Header />
 
-      {/* <!-- img  --> */}
       <div className="contact">
         <div className="container-md">
           <div className="row">
             <div className="col contactext">
-              <p className="text-light letterspace2">GET IN TOUCH</p>
-              <div className="display-3 logo text-light">Contact Us</div>
+              <p className="text-light letterspace2">{t("topSubtitle")}</p>
+              <div className="display-3 logo text-light">{t("topTitle")}</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* <!-- details  -->  */}
       <div className="contactdetails">
         <div className="container my-5">
           <div className="row d-flex flex-column flex-md-row justify-content-between">
             <div className="col-6">
               <div className="h3 logo text-dark">BLUECOURT HOTEL</div>
-              <p>
-                Discover a sanctuary where ancient heritage meets modern luxury.
-                Located just steps from the historic heart of Samarkand,
-                Bluecourt Hotel offers a unique boutique experience defined by
-                traditional Silk Road craftsmanship, intricate hand-carved
-                details, and world-class hospitality
-              </p>
+              <p>{t("hotelDescription")}</p>
+
               <div className="d-flex align-items-center">
                 <i className="fas fa-phone h1 checkicon sitecolor"></i>
                 <div className="d-flex flex-column">
-                  <div className="h5">Reservation</div>
+                  <div className="h5">{t("reservation")}</div>
                   <div className="sitecolor h5">+81 80 6549 2181</div>
                 </div>
               </div>
+
               <div className="d-flex align-items-center my-5">
                 <i className="fas fa-envelope h1 checkicon sitecolor"></i>
                 <div className="d-flex flex-column">
-                  <div className="h5">Email info</div>
+                  <div className="h5">{t("emailInfo")}</div>
                   <div className="sitecolor h5">info@bluecourt.uz</div>
                 </div>
               </div>
-              {/* <div className="d-flex align-items-center mb-5">
-                <i className="fas fa-map-marked-alt h1 checkicon sitecolor"></i>
-                <div className="d-flex flex-column">
-                  <div className="h5">Adress</div>
-                  <div className="sitecolor h5"></div>
-                </div>
-              </div> */}
+
               <div className="address-section">
-                {/* Address Text and Icon */}
                 <div className="d-flex align-items-center mb-3">
                   <i className="fas fa-map-marked-alt h1 checkicon sitecolor"></i>
                   <div className="d-flex flex-column">
-                    <div className="h5 mb-0">Address</div>
-                    <div className="sitecolor h5">
-                      132 Registan Street, Samarkand, Uzbekistan
-                    </div>
+                    <div className="h5 mb-0">{t("addressLabel")}</div>
+                    <div className="sitecolor h5">{t("fullAddress")}</div>
                   </div>
                 </div>
 
-                {/* Map Container */}
                 <div
                   style={{
                     width: "100%",
@@ -111,14 +97,15 @@ const Getintouch = () => {
                 </div>
               </div>
             </div>
+
             <div className="col-5">
-              <div className="h3 logo text-dark">Get in touch</div>
+              <div className="h3 logo text-dark">{t("formTitle")}</div>
               <>
                 <div className="d-flex">
                   <input
                     className="contactinput"
                     type="text"
-                    placeholder="Your Name*"
+                    placeholder={t("placeholderName")}
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
@@ -127,7 +114,7 @@ const Getintouch = () => {
                   <input
                     className="contactinput"
                     type="email"
-                    placeholder="Your Email*"
+                    placeholder={t("placeholderEmail")}
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
@@ -138,7 +125,7 @@ const Getintouch = () => {
                   <input
                     className="contactinput"
                     type="tel"
-                    placeholder="Your Number*"
+                    placeholder={t("placeholderNumber")}
                     name="number"
                     value={formData.number}
                     onChange={handleChange}
@@ -147,7 +134,7 @@ const Getintouch = () => {
                   <input
                     className="contactinput"
                     type="text"
-                    placeholder="Subject*"
+                    placeholder={t("placeholderSubject")}
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
@@ -157,7 +144,7 @@ const Getintouch = () => {
                 <div className="d-flex">
                   <textarea
                     className="contactinput"
-                    placeholder="Message*"
+                    placeholder={t("placeholderMessage")}
                     cols="35"
                     rows="5"
                     name="message"
@@ -171,7 +158,7 @@ const Getintouch = () => {
                   type="button"
                   onClick={handleMsgToBot}
                   className="contactinput checkinbtn letterspace px-3"
-                  value="SEND MESSAGE"
+                  value={t("sendButton")}
                 />
               </>
             </div>
@@ -179,7 +166,6 @@ const Getintouch = () => {
         </div>
       </div>
 
-      {/* footer  */}
       <Footer />
     </>
   );

@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <meta property="og:title" content="Bluecourt Hotel" />
         <meta property="og:description" content="Seamless Hotel in Samarkand" />
-        <meta property="og:image" content="https://bluecourt.uz/yard.png" />
+        <meta property="og:image" content="https://bluecourt.uz/18.jpg" />
         {/* Only put cross-site links/fonts here. No titles or viewport! */}
         <link rel="icon" type="image/x-icon" href="/favicon.jpg" />
         <link

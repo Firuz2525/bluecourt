@@ -27,8 +27,9 @@ export default function Checkinbox() {
       alert(t("alertIncomplete")); // Translated alert
       return;
     }
+    console.log(child);
     if (child === "") {
-      setChild(Number(0));
+      setChild("0");
     }
     const firstDay = new Date(from);
     const lastDay = new Date(to);

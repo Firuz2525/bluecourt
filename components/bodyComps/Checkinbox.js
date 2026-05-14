@@ -44,6 +44,7 @@ export default function Checkinbox() {
       adult,
       name,
       contact,
+      createdAt: new Date(),
     };
     setShowInput(!showInput);
     setLoading(true);
@@ -57,9 +58,9 @@ export default function Checkinbox() {
       setName("");
       setContact("");
       setLoading(false);
-      sendMessageToTelegram(
-        `Order: ${name} just checked in! Contact:${contact} From:${from} to:${to}, adults:${adult} and children:${child}.`
-      );
+      // sendMessageToTelegram(
+      //   `Order: ${name} just checked in! Contact:${contact} From:${from} to:${to}, adults:${adult} and children:${child}.`
+      // );
     } catch (err) {
       console.log(err);
       setLoading(false);

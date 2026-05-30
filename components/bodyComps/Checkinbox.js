@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Loading from "../Loading";
 import { v4 } from "uuid";
-import sendMessageToTelegram from "../msgToBot";
 import { PostingData } from "../firebase/getPost";
 import { useTranslations } from "next-intl"; // Added import
+import BookingSuccessModal from "../BookingSuccessModal";
+import RoomSelectionList from "../RoomSelectionList";
 
 export default function Checkinbox() {
   const t = useTranslations("Checkinbox"); // Initialize translations
@@ -15,6 +16,15 @@ export default function Checkinbox() {
   const [contact, setContact] = useState("");
   const [showInput, setShowInput] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [generatedBookingId, setGeneratedBookingId] = useState("");
+  // --- ROOM SELECTION STATE INTEGRATION ---
+  const [selectedRoom, setSelectedRoom] = useState(null);
+
+  // Custom handler when a row item is clicked
+  const handleRoomSelect = (room) => {
+    setSelectedRoom(room);
+  };
 
   const handleSubmit = async () => {
     if (
@@ -37,6 +47,11 @@ export default function Checkinbox() {
       alert(t("alertDates")); // Translated alert
       return;
     }
+    if (!selectedRoom) {
+      alert(t("alertRoomSelect"));
+      return;
+    }
+    const uniqueId = `BC-${Math.floor(1000 + Math.random() * 9000)}`;
     const order = {
       id: v4(),
       from,
@@ -45,13 +60,20 @@ export default function Checkinbox() {
       adult,
       name,
       contact,
+      uniqueId,
+      roomId: selectedRoom.id,
+      roomName: selectedRoom.name,
+      pricePerNight: selectedRoom.price,
       createdAt: new Date(),
     };
     setShowInput(!showInput);
     setLoading(true);
     try {
       PostingData("checkins", order);
-      alert(t("alertSuccess")); // Translated alert
+      setGeneratedBookingId(uniqueId);
+      setIsModalOpen(true);
+      setSelectedRoom(null);
+      // alert(t("alertSuccess")); // Translated alert
       setFrom("");
       setTo("");
       setChild("");
@@ -59,9 +81,6 @@ export default function Checkinbox() {
       setName("");
       setContact("");
       setLoading(false);
-      // sendMessageToTelegram(
-      //   `Order: ${name} just checked in! Contact:${contact} From:${from} to:${to}, adults:${adult} and children:${child}.`
-      // );
     } catch (err) {
       console.log(err);
       setLoading(false);
@@ -145,36 +164,51 @@ export default function Checkinbox() {
                 />
               </div>
               {showInput && (
-                <div className="my-3 chkn d-md-flex d-sm-flex flex-sm-column flex-md-row justify-content-between">
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder={t("placeholderName")}
-                    name="number"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                <>
+                  <div className="my-3 chkn d-md-flex d-sm-flex flex-sm-column flex-md-row justify-content-between">
+                    <input
+                      type="text"
+                      id="name"
+                      placeholder={t("placeholderName")}
+                      name="number"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                    <input
+                      type="text"
+                      id="contact"
+                      placeholder={t("placeholderContact")}
+                      name="number"
+                      value={contact}
+                      onChange={(e) => setContact(e.target.value)}
+                    />
+                    <input
+                      type="button"
+                      id="confirm"
+                      className="checkinbtn"
+                      value={t("confirmBtn")}
+                      name="confirm"
+                      onClick={handleSubmit}
+                    />
+                  </div>
+
+                  {/* 1. ROOM SELECTION STEP */}
+                  <RoomSelectionList
+                    selectedRoomId={selectedRoom ? selectedRoom.id : null}
+                    onSelectRoom={handleRoomSelect}
+                    onConfirmSelection={handleSubmit}
                   />
-                  <input
-                    type="text"
-                    id="contact"
-                    placeholder={t("placeholderContact")}
-                    name="number"
-                    value={contact}
-                    onChange={(e) => setContact(e.target.value)}
-                  />
-                  <input
-                    type="button"
-                    id="confirm"
-                    className="checkinbtn"
-                    value={t("confirmBtn")}
-                    name="confirm"
-                    onClick={handleSubmit}
-                  />
-                </div>
+                </>
               )}
             </>
           )}
         </div>
+        {/* --- MODAL PLACEMENT INTEGRATION --- */}
+        <BookingSuccessModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          bookingId={generatedBookingId}
+        />
       </div>
     </>
   );

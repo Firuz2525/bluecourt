@@ -119,7 +119,14 @@ export default function OrderTakePage() {
                   <th scope="col">Name</th>
                   <th scope="col">Contact</th>
                   <th scope="col">From</th>
+
                   <th scope="col">To</th>
+
+                  <th scope="col">RoomName</th>
+                  <th scope="col">Order-ID</th>
+                  <th scope="col">Room-ID</th>
+                  <th scope="col">Price</th>
+
                   <th scope="col" className="text-center">
                     Adult
                   </th>
@@ -137,6 +144,10 @@ export default function OrderTakePage() {
                       <td>{check.contact || "N/A"}</td>
                       <td>{check.from || "N/A"}</td>
                       <td>{check.to || "N/A"}</td>
+                      <td>{check.roomName || "N/A"}</td>
+                      <td>{check.uniqueId || "N/A"}</td>
+                      <td>{check.roomId || "N/A"}</td>
+                      <td>{check.pricePerNight || "N/A"}</td>
                       <td className="text-center">{check.adult ?? 0}</td>
                       <td className="text-center">{check.child ?? 0}</td>
                     </tr>

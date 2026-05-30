@@ -123,8 +123,8 @@ export default function OrderTakePage() {
                   <th scope="col">To</th>
 
                   <th scope="col">RoomName</th>
-                  <th scope="col">Order-ID</th>
-                  <th scope="col">Room-ID</th>
+                  <th scope="col">Booking-Id</th>
+                  <th scope="col">Room-Id</th>
                   <th scope="col">Price</th>
 
                   <th scope="col" className="text-center">

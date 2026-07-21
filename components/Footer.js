@@ -27,7 +27,10 @@ const Footer = () => {
             <div className="col-4 my-5">
               <div className="text-white logo h4 mb-3">{t("contact")}</div>
               <div className="text-white-50">
-                <p>{t("address")}</p>
+                <p>
+                  {/* {t("address")} */}6, Gani Abdullo street, Samarkand city,
+                  Samarkand, Uzbekistan
+                </p>
 
                 <a className="text-white email">info@bluecourt.uz</a>
                 <div className="h4 my-3 text-white logo">

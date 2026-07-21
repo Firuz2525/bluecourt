@@ -73,7 +73,7 @@ export default function RoomSelectionList({
                   {room.imageUrls.map((url, index) => (
                     <div
                       key={index}
-                      className="w-100 h-100 flex-shrink-0"
+                      className="w-100 flex-shrink-0"
                       style={{
                         scrollSnapAlign: "center",
                         position: "relative",
@@ -82,8 +82,8 @@ export default function RoomSelectionList({
                       <img
                         src={url}
                         alt={`${room.name} view`}
-                        className="w-100 h-100"
-                        style={{ objectFit: "cover", minHeight: "260px" }}
+                        className="w-100"
+                        style={{ objectFit: "cover", height: "260px" }}
                       />
                     </div>
                   ))}
@@ -191,7 +191,7 @@ export default function RoomSelectionList({
                   style={{ fontFamily: "sans-serif" }}
                 >
                   <p className="text-muted small mb-0 fst-italic">
-                    {t("description")}
+                    {room.description}
                   </p>
 
                   {/* 2. CONDITIONAL CONFIRM BUTTON */}

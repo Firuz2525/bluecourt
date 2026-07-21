@@ -36,7 +36,7 @@ export default function Slider() {
         <div className="carousel-inner">
           {/* Slide 1 */}
           <div className="carousel-item active">
-            <img src="./18.jpg" className="d-block w-100" alt="..." />
+            <img src="./mainimg/a.jpg" className="d-block w-100" alt="..." />
             <div className="carousel-caption mb-5 d-none d-md-block">
               <h1 className="logo letterspace scomment">{t("slide1Title")}</h1>
               <Link href="/rooms">
@@ -49,7 +49,7 @@ export default function Slider() {
 
           {/* Slide 2 */}
           <div className="carousel-item">
-            <img src="./2.jpg" className="d-block w-100" alt="..." />
+            <img src="./mainimg/b.jpg" className="d-block w-100" alt="..." />
             <div className="carousel-caption mb-5 d-none d-md-block">
               <p>{t("slide2Sub")}</p>
               <h1 className="logo letterspace scomment">{t("slide2Title")}</h1>
@@ -63,7 +63,7 @@ export default function Slider() {
 
           {/* Slide 3 */}
           <div className="carousel-item">
-            <img src="./14.jpg" className="d-block w-100" alt="..." />
+            <img src="./mainimg/a.jpg" className="d-block w-100" alt="..." />
             <div className="carousel-caption mb-5 d-none d-md-block">
               <p>{t("slide3Sub")}</p>
               <h1 className="logo letterspace scomment">{t("slide3Title")}</h1>

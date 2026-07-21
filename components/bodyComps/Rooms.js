@@ -19,10 +19,17 @@ export default function Rooms() {
         <div className="row d-flex justify-content-center">
           {/* Junior Suite */}
           <div className="col-md m-3 ui-card">
-            <img className="roomsimg" src="./p2.jpg" alt="Junior Suite" />
+            <img
+              className="roomsimg"
+              src="./images/rooms/rm-101/h.jpg"
+              alt="Junior Suite"
+            />
             <div className="description desc uper">
-              <h5>150$ / {t("night")}</h5>
-              <div className="rtype logo h2">{t("juniorSuite")}</div>
+              <h5>100$ / {t("night")}</h5>
+              <div className="rtype logo h2">
+                {/* {t("juniorSuite")} */}
+                Blue Ornament Room
+              </div>
               <div className="rsicons d-flex justify-content-between">
                 <div className="roomicons">
                   <i className="fas fa-solid fa-bath"></i>
@@ -30,7 +37,8 @@ export default function Rooms() {
                   <i className="fas fa-solid fa-wifi"></i>
                   <i className="fas fa-tv"></i>
                 </div>
-                <Link href="/rooms">
+                <div></div>
+                {/* <Link href="/rooms">
                   <div className="cursorpointer">
                     {t("details")}
                     <svg
@@ -47,17 +55,24 @@ export default function Rooms() {
                       />
                     </svg>
                   </div>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
 
           {/* Family Room */}
           <div className="col-md m-3 ui-card">
-            <img className="roomsimg" src="./p4.jpg" alt="Family Room" />
+            <img
+              className="roomsimg"
+              src="./images/rooms/rm-103/a.jpg"
+              alt="Family Room"
+            />
             <div className="description desc uper">
-              <h5>200$ / {t("night")}</h5>
-              <div className="rtype logo h2">{t("familyRoom")}</div>
+              <h5>120$ / {t("night")}</h5>
+              <div className="rtype logo h2">
+                Suzani Deluxe Room
+                {/* {t("familyRoom")} */}
+              </div>
               <div className="rsicons d-flex justify-content-between">
                 <div className="roomicons">
                   <i className="fas fa-solid fa-bath"></i>
@@ -65,22 +80,29 @@ export default function Rooms() {
                   <i className="fas fa-solid fa-wifi"></i>
                   <i className="fas fa-tv"></i>
                 </div>
-                <Link href="/rooms">
+                <div></div>
+                {/* <Link href="/rooms">
                   <div className="cursorpointer">
                     {t("details")}
-                    {/* SVG Omitted for brevity, keep same as above */}
                   </div>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
 
           {/* Twin Room */}
           <div className="col-md m-3 ui-card">
-            <img className="roomsimg" src="./p5.jpg" alt="Twin Room" />
+            <img
+              className="roomsimg"
+              src="./images/rooms/rm-102/a.jpg"
+              alt="Twin Room"
+            />
             <div className="description desc uper">
-              <h5>250$ / {t("night")}</h5>
-              <div className="rtype logo h2">{t("twinRoom")}</div>
+              <h5>120$ / {t("night")}</h5>
+              <div className="rtype logo h2">
+                {/* {t("twinRoom")} */}
+                Shinam Arch Room
+              </div>
               <div className="rsicons d-flex justify-content-between">
                 <div className="roomicons">
                   <i className="fas fa-solid fa-bath"></i>
@@ -88,9 +110,10 @@ export default function Rooms() {
                   <i className="fas fa-solid fa-wifi"></i>
                   <i className="fas fa-tv"></i>
                 </div>
-                <Link href="/rooms">
+                <div></div>{" "}
+                {/* <Link href="/rooms">
                   <div className="cursorpointer">{t("details")}</div>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
@@ -100,10 +123,17 @@ export default function Rooms() {
         <div className="row d-flex justify-content-center">
           {/* Deluxe Room */}
           <div className="col-md m-3 ui-card">
-            <img className="roomsimg" src="./12.jpg" alt="Deluxe Room" />
+            <img
+              className="roomsimg"
+              src="./images/rooms/rm-105/h.jpg"
+              alt="Deluxe Room"
+            />
             <div className="description desc">
-              <h5>350$ / {t("night")}</h5>
-              <div className="rtype logo h2">{t("deluxeRoom")}</div>
+              <h5>150$ / {t("night")}</h5>
+              <div className="rtype logo h2">
+                {/* {t("deluxeRoom")} */}
+                Ganch Heritage Room
+              </div>
               <div className="rsicons d-flex justify-content-between">
                 <div className="roomicons">
                   <i className="fas fa-solid fa-bath"></i>
@@ -111,19 +141,27 @@ export default function Rooms() {
                   <i className="fas fa-solid fa-wifi"></i>
                   <i className="fas fa-tv"></i>
                 </div>
-                <Link href="/rooms">
+                <div></div>
+                {/* <Link href="/rooms">
                   <div className="cursorpointer">{t("details")}</div>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
 
           {/* Superior Room */}
           <div className="col-md m-3 ui-card">
-            <img className="roomsimg" src="./2.png" alt="Superior Room" />
+            <img
+              className="roomsimg"
+              src="./images/rooms/rm-104/a.jpg"
+              alt="Superior Room"
+            />
             <div className="description desc">
-              <h5>550$ / {t("night")}</h5>
-              <div className="rtype logo h2">{t("superiorRoom")}</div>
+              <h5>150$ / {t("night")}</h5>
+              <div className="rtype logo h2">
+                {/* {t("superiorRoom")} */}
+                Silk Alcove Room
+              </div>
               <div className="rsicons d-flex justify-content-between">
                 <div className="roomicons">
                   <i className="fas fa-solid fa-bath"></i>
@@ -131,9 +169,10 @@ export default function Rooms() {
                   <i className="fas fa-solid fa-wifi"></i>
                   <i className="fas fa-tv"></i>
                 </div>
-                <Link href="/rooms">
+                <div></div>
+                {/* <Link href="/rooms">
                   <div className="cursorpointer">{t("details")}</div>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

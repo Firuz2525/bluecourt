@@ -32,16 +32,7 @@ const Getintouch = () => {
     <>
       <Header />
 
-      <div className="contact">
-        <div className="container-md">
-          <div className="row">
-            <div className="col contactext">
-              <p className="text-light letterspace2">{t("topSubtitle")}</p>
-              <div className="display-3 logo text-light">{t("topTitle")}</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div className="contact"></div>
 
       <div className="contactdetails">
         <div className="container my-5">
@@ -85,7 +76,7 @@ const Getintouch = () => {
                   }}
                 >
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d767.9707785023768!2d66.97984426955257!3d39.65234503078109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMznCsDM5JzA4LjQiTiA2NsKwNTgnNDkuOCJF!5e0!3m2!1sen!2sus!4v1768484258588!5m2!1sen!2sus"
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d767.9707785023768!2d66.98054426955257!3d39.65244503078109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMznCsDM5JzA4LjQiTiA2NsKwNTgnNDkuOCJF!5e0!3m2!1sen!2sus!4v1768484258588!5m2!1sen!2sus"
                     width="100%"
                     height="500"
                     style={{ border: 0 }}

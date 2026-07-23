@@ -17,11 +17,15 @@ const Footer = () => {
             <div className="col-3 my-5">
               <div className="text-white logo h4 mb-3">{t("explore")}</div>
               <div className="text-white-50 explorediv">
-                <div>{t("home")}</div>
-                <div>{t("rooms")}</div>
-                <div>{t("restaurant")}</div>
-                <div>{t("gallery")}</div>
-                <div>{t("contact")}</div>
+                {/* <div>{t("home")}</div> */}
+                {/* <div>{t("rooms")}</div> */}
+                {/* <div>{t("restaurant")}</div> */}
+                <Link href="/gallery" target="_blank">
+                  <div>{t("gallery")}</div>
+                </Link>
+                <Link href="/contact" target="_blank">
+                  <div>{t("contact")}</div>
+                </Link>
               </div>
             </div>
             <div className="col-4 my-5">
@@ -32,12 +36,12 @@ const Footer = () => {
                   Samarkand, Uzbekistan
                 </p>
 
-                <a className="text-white email">info@bluecourt.uz</a>
+                {/* <a className="text-white email">info@bluecourt.uz</a> */}
                 <div className="h4 my-3 text-white logo">
                   <i className="fas fa-phone"></i> +81 80 6549 2181
                 </div>
                 <div className="h4 text-white socialsite">
-                  <Link
+                  {/* <Link
                     href="https://t.me/mamonaku1"
                     target="_blank"
                     className="primary"
@@ -46,7 +50,7 @@ const Footer = () => {
                   </Link>
                   <i className="fab fa-line mx-2"></i>
                   <i className="fab fa-whatsapp mx-2"></i>
-                  <i className="fab fa-facebook-f mx-2"></i>
+                  <i className="fab fa-facebook-f mx-2"></i> */}
                 </div>
               </div>
             </div>

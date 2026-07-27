@@ -3,6 +3,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import sendMessageToTelegram from "./msgToBot";
 import { useTranslations } from "next-intl";
+import HotelMap from "./HotelMap";
 
 const Getintouch = () => {
   const t = useTranslations("GetInTouch");
@@ -75,8 +76,8 @@ const Getintouch = () => {
                     border: "1px solid #ddd",
                   }}
                 >
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d767.9707785023768!2d66.98054426955257!3d39.65244503078109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMznCsDM5JzA4LjQiTiA2NsKwNTgnNDkuOCJF!5e0!3m2!1sen!2sus!4v1768484258588!5m2!1sen!2sus"
+                  {/* <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1085.8095782220123!2d66.97977704198848!3d39.651726324102114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMznCsDM5JzA2LjIiTiA2NsKwNTgnNDcuMiJF!5e0!3m2!1sen!2sjp!4v1785148653108!5m2!1sen!2sjp"
                     width="100%"
                     height="500"
                     style={{ border: 0 }}
@@ -84,7 +85,18 @@ const Getintouch = () => {
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     title="Hotel Location Map"
-                  ></iframe>
+                  ></iframe> */}
+                  {/* <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d767.9707785023768!2d66.979111!3d39.652150!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMznCsDM5JzA3LjciTiA2NsKwNTgnNDcuNSJF!5e0!3m2!1sen!2sus!4v1768484258588!5m2!1sen!2sus"
+                    width="100%"
+                    height="500"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Hotel Location Map"
+                  ></iframe> */}
+                  <HotelMap />
                 </div>
               </div>
             </div>

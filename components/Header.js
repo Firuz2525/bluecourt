@@ -13,7 +13,7 @@ const Header = () => {
     <>
       <div className="hdr">
         <div className="container-md">
-          <header className="d-flex justify-content-between py-3 border-bottom">
+          <header className="d-flex flex-column flex-sm-row justify-content-between py-3 border-bottom">
             {/* LOGO */}
             <Link href="/" locale={locale}>
               <h2 className="bluecourt cursorpointer fw-bolder d-flex align-items-center mb-3 mb-md-0 me-md-auto fs-4 logo">
@@ -21,13 +21,11 @@ const Header = () => {
               </h2>
             </Link>
 
-            <nav
-              className="navbar navbar-expand-md navbar-dark"
-              aria-label="Third navbar example"
-            >
+            {/* <nav className="navbar navbar-expand-md navbar-dark" aria-label=""> */}
+            <nav className="navbar navbar-expand navbar-dark" aria-label="">
               <div className="container-fluid">
                 {/* MOBILE TOGGLER */}
-                <button
+                {/* <button
                   className="navbar-toggler"
                   type="button"
                   data-bs-toggle="collapse"
@@ -37,10 +35,11 @@ const Header = () => {
                   aria-label="Toggle navigation"
                 >
                   <span className="navbar-toggler-icon"></span>
-                </button>
+                </button> */}
 
                 <div className="collapse navbar-collapse" id="navbarsExample03">
                   <ul className="navbar-nav align-items-center">
+                    {/* <ul className="d-flex flex-column flex-sm-row navbar-nav align-items-center"> */}
                     {/* HOME */}
                     <li className="nav-item text-white nav-link">
                       <Link href="/" locale={locale}>

@@ -2,12 +2,12 @@ import { useState } from "react";
 import Loading from "../Loading";
 import { v4 } from "uuid";
 import { PostingData } from "../firebase/getPost";
-import { useTranslations } from "next-intl"; // Added import
+import { useTranslations } from "next-intl";
 import BookingSuccessModal from "../BookingSuccessModal";
 import RoomSelectionList from "../RoomSelectionList";
 
 export default function Checkinbox() {
-  const t = useTranslations("Checkinbox"); // Initialize translations
+  const t = useTranslations("Checkinbox");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [child, setChild] = useState("");
@@ -18,6 +18,7 @@ export default function Checkinbox() {
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [generatedBookingId, setGeneratedBookingId] = useState("");
+
   // --- ROOM SELECTION STATE INTEGRATION ---
   const [selectedRoom, setSelectedRoom] = useState(null);
 
@@ -34,7 +35,7 @@ export default function Checkinbox() {
       contact === "" ||
       adult === ""
     ) {
-      alert(t("alertIncomplete")); // Translated alert
+      alert(t("alertIncomplete"));
       return;
     }
     console.log(child);
@@ -44,7 +45,7 @@ export default function Checkinbox() {
     const firstDay = new Date(from);
     const lastDay = new Date(to);
     if (firstDay > lastDay) {
-      alert(t("alertDates")); // Translated alert
+      alert(t("alertDates"));
       return;
     }
     if (!selectedRoom) {
@@ -73,7 +74,6 @@ export default function Checkinbox() {
       setGeneratedBookingId(uniqueId);
       setIsModalOpen(true);
       setSelectedRoom(null);
-      // alert(t("alertSuccess")); // Translated alert
       setFrom("");
       setTo("");
       setChild("");
@@ -89,107 +89,112 @@ export default function Checkinbox() {
 
   return (
     <>
-      <div id="checkinbox" className="checkinbox">
-        <div className="container-md py-5">
-          <div className="row">
-            <div className="letterspace text-white">{t("checkNow")}</div>
+      <div id="checkinbox" className="checkinbox p-2 p-md-4">
+        <div className="container-md py-4">
+          <div className="row mb-4 text-center text-md-start">
+            <div className="letterspace mb-1">{t("checkNow")}</div>
             <div className="display-5 logo text-light">{t("searchRooms")}</div>
           </div>
-          {/* <Toast /> */}
+
           {loading ? (
             <Loading />
           ) : (
             <>
-              <div className="my-3 chkn d-md-flex d-sm-flex flex-sm-column flex-md-row justify-content-between">
-                <input
-                  type="date"
-                  id="checkin"
-                  className="checkin"
-                  placeholder={t("placeholderCheckIn")}
-                  name="date"
-                  value={from}
-                  onChange={(e) => setFrom(e.target.value)}
-                />
-                <input
-                  type="date"
-                  id="checkout"
-                  className="checkin"
-                  placeholder={t("placeholderCheckOut")}
-                  name="date"
-                  value={to}
-                  onChange={(e) => setTo(e.target.value)}
-                />
-                <input
-                  type="number"
-                  id="adults"
-                  placeholder={t("placeholderAdults")}
-                  name="number"
-                  value={adult}
-                  onChange={(e) => {
-                    if (e.target.value >= 1) {
-                      setAdult(Number(e.target.value));
-                    } else {
-                      setAdult("");
-                    }
-                  }}
-                />
-                <input
-                  type="number"
-                  id="children"
-                  placeholder={t("placeholderChildren")}
-                  name="number"
-                  value={child}
-                  onChange={(e) => {
-                    if (e.target.value >= 1) {
-                      setChild(Number(e.target.value));
-                    } else {
-                      setChild("");
-                    }
-                  }}
-                />
+              <div className="chkn-wrapper mb-4">
+                <div className="chkn d-flex flex-column flex-md-row gap-2">
+                  <input
+                    type="date"
+                    id="checkin"
+                    className="checkin"
+                    placeholder={t("placeholderCheckIn")}
+                    name="date"
+                    value={from}
+                    onChange={(e) => setFrom(e.target.value)}
+                  />
+                  <input
+                    type="date"
+                    id="checkout"
+                    className="checkin"
+                    placeholder={t("placeholderCheckOut")}
+                    name="date"
+                    value={to}
+                    onChange={(e) => setTo(e.target.value)}
+                  />
+                  <input
+                    type="number"
+                    id="adults"
+                    placeholder={t("placeholderAdults")}
+                    name="number"
+                    value={adult}
+                    onChange={(e) => {
+                      if (e.target.value >= 1) {
+                        setAdult(Number(e.target.value));
+                      } else {
+                        setAdult("");
+                      }
+                    }}
+                  />
+                  <input
+                    type="number"
+                    id="children"
+                    placeholder={t("placeholderChildren")}
+                    name="number"
+                    value={child}
+                    onChange={(e) => {
+                      if (e.target.value >= 1) {
+                        setChild(Number(e.target.value));
+                      } else {
+                        setChild("");
+                      }
+                    }}
+                  />
 
-                <input
-                  type="button"
-                  id="checkout"
-                  className="checkinbtn"
-                  value={t("checkNowBtn")}
-                  name="number"
-                  onClick={() => {
-                    if (from !== "" || to !== "" || adult !== "") {
-                      setShowInput(!showInput);
-                    } else {
-                      alert(t("alertDatesAndPeople")); // Translated alert
-                    }
-                  }}
-                />
+                  <input
+                    type="button"
+                    id="checkout"
+                    className="checkinbtn px-4"
+                    value={t("checkNowBtn")}
+                    name="number"
+                    onClick={() => {
+                      if (from !== "" || to !== "" || adult !== "") {
+                        setShowInput(!showInput);
+                      } else {
+                        alert(t("alertDatesAndPeople"));
+                      }
+                    }}
+                  />
+                </div>
               </div>
+
               {showInput && (
                 <>
-                  <div className="my-3 chkn d-md-flex d-sm-flex flex-sm-column flex-md-row justify-content-between">
-                    <input
-                      type="text"
-                      id="name"
-                      placeholder={t("placeholderName")}
-                      name="number"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                    <input
-                      type="text"
-                      id="contact"
-                      placeholder={t("placeholderContact")}
-                      name="number"
-                      value={contact}
-                      onChange={(e) => setContact(e.target.value)}
-                    />
-                    <input
-                      type="button"
-                      id="confirm"
-                      className="checkinbtn"
-                      value={t("confirmBtn")}
-                      name="confirm"
-                      onClick={handleSubmit}
-                    />
+                  <div className="chkn-wrapper mb-4">
+                    <div className="chkn d-flex flex-column flex-md-row gap-2">
+                      <input
+                        type="text"
+                        id="name"
+                        placeholder={t("placeholderName")}
+                        name="number"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                      <input
+                        type="text"
+                        id="contact"
+                        placeholder={t("placeholderContact")}
+                        name="number"
+                        value={contact}
+                        onChange={(e) => setContact(e.target.value)}
+                      />
+                      <input
+                        type="button"
+                        id="confirm"
+                        className="checkinbtn px-4"
+                        value={t("confirmBtn")}
+                        name="confirm"
+                        onClick={handleSubmit}
+                      />
+                    </div>
                   </div>
 
                   {/* 1. ROOM SELECTION STEP */}
@@ -203,6 +208,7 @@ export default function Checkinbox() {
             </>
           )}
         </div>
+
         {/* --- MODAL PLACEMENT INTEGRATION --- */}
         <BookingSuccessModal
           isOpen={isModalOpen}

@@ -102,7 +102,7 @@ export default function Checkinbox() {
             <>
               <div className="chkn-wrapper mb-4">
                 <div className="chkn d-flex flex-column flex-md-row gap-2">
-                  <input
+                  {/* <input
                     type="date"
                     id="checkin"
                     className="checkin"
@@ -117,6 +117,33 @@ export default function Checkinbox() {
                     className="checkin"
                     placeholder={t("placeholderCheckOut")}
                     name="date"
+                    value={to}
+                    onChange={(e) => setTo(e.target.value)}
+                  /> */}
+                  {/* CHECK IN INPUT */}
+                  <input
+                    type={from ? "date" : "text"}
+                    onFocus={(e) => (e.target.type = "date")}
+                    onBlur={(e) => {
+                      if (!e.target.value) e.target.type = "text";
+                    }}
+                    id="checkin"
+                    className="checkin"
+                    placeholder={t("placeholderCheckIn")}
+                    value={from}
+                    onChange={(e) => setFrom(e.target.value)}
+                  />
+
+                  {/* CHECK OUT INPUT */}
+                  <input
+                    type={to ? "date" : "text"}
+                    onFocus={(e) => (e.target.type = "date")}
+                    onBlur={(e) => {
+                      if (!e.target.value) e.target.type = "text";
+                    }}
+                    id="checkout"
+                    className="checkin"
+                    placeholder={t("placeholderCheckOut")}
                     value={to}
                     onChange={(e) => setTo(e.target.value)}
                   />

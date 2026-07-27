@@ -172,6 +172,19 @@ body {
   margin-right: 14px;
 } */
 /* Container Box with Glassmorphism & Gold Accent Glow */
+/* Force mobile webkit inputs to show light text when value/placeholder is active */
+input[type="date"],
+input[type="text"] {
+  -webkit-appearance: none;
+  min-height: 52px; /* Ensures consistent height on iOS */
+  color: #f8f9fa !important;
+}
+
+/* Fix iOS dark mode date picker text visibility */
+::-webkit-date-and-time-value {
+  text-align: left;
+  color: #f8f9fa;
+}
 .checkinbox {
   background: linear-gradient(
     135deg,

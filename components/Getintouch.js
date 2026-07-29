@@ -3,7 +3,6 @@ import Footer from "./Footer";
 import Header from "./Header";
 import sendMessageToTelegram from "./msgToBot";
 import { useTranslations } from "next-intl";
-import HotelMap from "./HotelMap";
 
 const Getintouch = () => {
   const t = useTranslations("GetInTouch");
@@ -28,6 +27,30 @@ const Getintouch = () => {
       `Get In Touch: ${formData.name}, ${formData.email}, ${formData.number}, ${formData.subject}: ${formData.message}`
     );
   };
+  function createGoogleMap2zLabel(latDMS, lngDMS) {
+    // 1. Join latitude and longitude into Google's raw text label format
+    const rawText = `${latDMS} ${lngDMS}`;
+
+    // 2. Encode string into UTF-8 bytes (required for special characters like °)
+    const utf8Bytes = new TextEncoder().encode(rawText);
+
+    // 3. Convert bytes into binary string
+    const binaryString = String.fromCharCode(...utf8Bytes);
+
+    // 4. Convert to Base64 and make it URL-safe
+    return btoa(binaryString)
+      .replace(/\+/g, "-")
+      .replace(/\//g, "_")
+      .replace(/=+$/, "");
+  }
+
+  // Usage Example: vertical: 07.05  horizontal: 49.7 went right
+  const label = createGoogleMap2zLabel("39°39'07.05\"N", "66°58'49.7\"E");
+  console.log(label);
+  // Output: MznCsDM5JzA3LjciTiA2NsKwNTgnNDQuNiJF
+  //  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1085.8095782220123!2d66.97977704198848!3d39.651726324102114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2z
+  // MznCsDM5JzA3LjA1Ik4gNjbCsDU4JzQ5LjciRQ
+  // !5e0!3m2!1sen!2sjp!4v1785148653108!5m2!1sen!2sjp"
 
   return (
     <>
@@ -38,7 +61,7 @@ const Getintouch = () => {
       <div className="contactdetails">
         <div className="container my-5">
           <div className="row d-flex flex-column flex-md-row justify-content-between">
-            <div className="col-6">
+            <div className="col-md-6">
               <div className="h3 logo text-dark">BLUECOURT HOTEL</div>
               <p>{t("hotelDescription")}</p>
 
@@ -76,8 +99,8 @@ const Getintouch = () => {
                     border: "1px solid #ddd",
                   }}
                 >
-                  {/* <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1085.8095782220123!2d66.97977704198848!3d39.651726324102114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMznCsDM5JzA2LjIiTiA2NsKwNTgnNDcuMiJF!5e0!3m2!1sen!2sjp!4v1785148653108!5m2!1sen!2sjp"
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1085.8095782220123!2d66.98035804198848!3d39.651726324102114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMznCsDM5JzA3LjA1Ik4gNjbCsDU4JzQ5LjciRQ!5e0!3m2!1sen!2sjp!4v1785148653108!5m2!1sen!2sjp"
                     width="100%"
                     height="500"
                     style={{ border: 0 }}
@@ -85,23 +108,12 @@ const Getintouch = () => {
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     title="Hotel Location Map"
-                  ></iframe> */}
-                  {/* <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d767.9707785023768!2d66.979111!3d39.652150!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMznCsDM5JzA3LjciTiA2NsKwNTgnNDcuNSJF!5e0!3m2!1sen!2sus!4v1768484258588!5m2!1sen!2sus"
-                    width="100%"
-                    height="500"
-                    style={{ border: 0 }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Hotel Location Map"
-                  ></iframe> */}
-                  <HotelMap />
+                  ></iframe>
                 </div>
               </div>
             </div>
 
-            <div className="col-5">
+            <div className="col-md-5">
               <div className="h3 logo text-dark">{t("formTitle")}</div>
               <>
                 <div className="d-flex">

@@ -175,7 +175,7 @@ body {
 /* Force mobile webkit inputs to show light text when value/placeholder is active */
 input[type="date"],
 input[type="text"] {
-  -webkit-appearance: none;
+  /* -webkit-appearance: none; */
   min-height: 52px; /* Ensures consistent height on iOS */
   color: #f8f9fa !important;
 }

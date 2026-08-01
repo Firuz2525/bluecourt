@@ -175,6 +175,37 @@ export default function Checkinbox() {
                       }
                     }}
                   />
+                  {/* ADULTS SELECT */}
+                  <select
+                    id="adults"
+                    value={adult}
+                    onChange={(e) => setAdult(e.target.value)}
+                  >
+                    <option value="" disabled hidden>
+                      {t("placeholderAdults")}
+                    </option>
+                    {[...Array(9)].map((_, i) => (
+                      <option key={i + 1} value={i + 1}>
+                        {i + 1}
+                      </option>
+                    ))}
+                  </select>
+
+                  {/* CHILDREN SELECT */}
+                  <select
+                    id="children"
+                    value={child}
+                    onChange={(e) => setChild(e.target.value)}
+                  >
+                    <option value="" disabled hidden>
+                      {t("placeholderChildren")}
+                    </option>
+                    {[...Array(9)].map((_, i) => (
+                      <option key={i + 1} value={i + 1}>
+                        {i + 1}
+                      </option>
+                    ))}
+                  </select>
 
                   <input
                     type="button"

@@ -20,7 +20,7 @@ export default function Checkinbox() {
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [generatedBookingId, setGeneratedBookingId] = useState("");
-
+  // console.log(from, to, child, adult);
   // --- ROOM SELECTION STATE INTEGRATION ---
   const [selectedRoom, setSelectedRoom] = useState(null);
 
@@ -40,7 +40,7 @@ export default function Checkinbox() {
       alert(t("alertIncomplete"));
       return;
     }
-    console.log(child);
+    // console.log(child);
     if (child === "") {
       setChild("0");
     }
@@ -72,6 +72,7 @@ export default function Checkinbox() {
     setShowInput(!showInput);
     setLoading(true);
     try {
+      console.log(order);
       PostingData("checkins", order);
       setGeneratedBookingId(uniqueId);
       setIsModalOpen(true);
@@ -153,7 +154,7 @@ export default function Checkinbox() {
                   {/* <input
                     type={from ? "date" : "text"}
                     onFocus={(e) => (e.target.type = "date")}
-                    onBlur={(e) => {
+                    onBlur={(e)  => {
                       if (!e.target.value) e.target.type = "text";
                     }}
                     id="checkin"

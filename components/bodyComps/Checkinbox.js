@@ -177,6 +177,7 @@ export default function Checkinbox() {
                   />
                   {/* ADULTS SELECT */}
                   <select
+                    className="selection"
                     id="adults"
                     value={adult}
                     onChange={(e) => setAdult(e.target.value)}
@@ -194,6 +195,7 @@ export default function Checkinbox() {
                   {/* CHILDREN SELECT */}
                   <select
                     id="children"
+                    className="selection"
                     value={child}
                     onChange={(e) => setChild(e.target.value)}
                   >

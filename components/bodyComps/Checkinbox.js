@@ -176,7 +176,7 @@ export default function Checkinbox() {
                     }}
                   />
                   {/* ADULTS SELECT */}
-                  <select
+                  {/* <select
                     className="selection"
                     id="adults"
                     value={adult}
@@ -190,10 +190,10 @@ export default function Checkinbox() {
                         {i + 1}
                       </option>
                     ))}
-                  </select>
+                  </select> */}
 
                   {/* CHILDREN SELECT */}
-                  <select
+                  {/* <select
                     id="children"
                     className="selection"
                     value={child}
@@ -207,7 +207,7 @@ export default function Checkinbox() {
                         {i + 1}
                       </option>
                     ))}
-                  </select>
+                  </select> */}
 
                   <input
                     type="button"

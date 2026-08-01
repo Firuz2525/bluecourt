@@ -5,6 +5,7 @@ import { PostingData } from "../firebase/getPost";
 import { useTranslations } from "next-intl";
 import BookingSuccessModal from "../BookingSuccessModal";
 import RoomSelectionList from "../RoomSelectionList";
+import DatePicker from "../DatePicker";
 
 export default function Checkinbox() {
   const t = useTranslations("Checkinbox");
@@ -86,7 +87,7 @@ export default function Checkinbox() {
       setLoading(false);
     }
   };
-
+  const [selectedDate, setSelectedDate] = useState("");
   return (
     <>
       <div id="checkinbox" className="checkinbox p-2 p-md-4">
@@ -208,7 +209,11 @@ export default function Checkinbox() {
                       </option>
                     ))}
                   </select> */}
-
+                  <DatePicker
+                    label="Delivery Date"
+                    value={selectedDate}
+                    onChange={(date) => setSelectedDate(date)}
+                  />
                   <input
                     type="button"
                     id="checkout"

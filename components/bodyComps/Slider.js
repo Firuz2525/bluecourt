@@ -8,7 +8,7 @@ export default function Slider() {
     <>
       <div
         id="carouselExampleIndicators"
-        className="carousel slide"
+        className="carousel slide pointer-event"
         data-bs-ride="carousel"
       >
         <div className="carousel-indicators">

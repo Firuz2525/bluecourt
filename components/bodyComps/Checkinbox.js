@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import BookingSuccessModal from "../BookingSuccessModal";
 import RoomSelectionList from "../RoomSelectionList";
 import DatePicker from "../DatePicker";
+import GuestPicker from "./GuestPicker";
 
 export default function Checkinbox() {
   const t = useTranslations("Checkinbox");
@@ -87,7 +88,6 @@ export default function Checkinbox() {
       setLoading(false);
     }
   };
-  const [selectedDate, setSelectedDate] = useState("");
   return (
     <>
       <div id="checkinbox" className="checkinbox p-2 p-md-4">
@@ -122,7 +122,35 @@ export default function Checkinbox() {
                     onChange={(e) => setTo(e.target.value)}
                   /> */}
                   {/* CHECK IN INPUT */}
-                  <input
+                  <DatePicker
+                    label="check in:"
+                    value={from}
+                    onChange={(date) => setFrom(date)}
+                  />
+                  <DatePicker
+                    label="check out:"
+                    value={to}
+                    onChange={(date) => setTo(date)}
+                  />
+                  <GuestPicker
+                    label="Guests"
+                    singularLabel="Adult"
+                    pluralLabel="Adults"
+                    value={adult}
+                    onChange={(count) => setAdult(count)}
+                    min={1}
+                    max={9}
+                  />
+                  <GuestPicker
+                    label="Children"
+                    singularLabel="Child"
+                    pluralLabel="Children"
+                    value={child}
+                    onChange={(count) => setChild(count)}
+                    min={1}
+                    max={9}
+                  />
+                  {/* <input
                     type={from ? "date" : "text"}
                     onFocus={(e) => (e.target.type = "date")}
                     onBlur={(e) => {
@@ -133,10 +161,10 @@ export default function Checkinbox() {
                     placeholder={t("placeholderCheckIn")}
                     value={from}
                     onChange={(e) => setFrom(e.target.value)}
-                  />
+                  /> */}
 
                   {/* CHECK OUT INPUT */}
-                  <input
+                  {/* <input
                     type={to ? "date" : "text"}
                     onFocus={(e) => (e.target.type = "date")}
                     onBlur={(e) => {
@@ -147,8 +175,8 @@ export default function Checkinbox() {
                     placeholder={t("placeholderCheckOut")}
                     value={to}
                     onChange={(e) => setTo(e.target.value)}
-                  />
-                  <input
+                  /> */}
+                  {/* <input
                     type="number"
                     id="adults"
                     placeholder={t("placeholderAdults")}
@@ -175,7 +203,7 @@ export default function Checkinbox() {
                         setChild("");
                       }
                     }}
-                  />
+                  /> */}
                   {/* ADULTS SELECT */}
                   {/* <select
                     className="selection"
@@ -209,11 +237,7 @@ export default function Checkinbox() {
                       </option>
                     ))}
                   </select> */}
-                  <DatePicker
-                    label="Delivery Date"
-                    value={selectedDate}
-                    onChange={(date) => setSelectedDate(date)}
-                  />
+
                   <input
                     type="button"
                     id="checkout"

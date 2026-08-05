@@ -124,7 +124,7 @@ const Getintouch = () => {
                 <i className="fas fa-envelope h1 checkicon sitecolor"></i>
                 <div className="d-flex flex-column">
                   <div className="h5">{t("emailInfo")}</div>
-                  <div className="sitecolor h5">mbobomurod@gmail.com</div>
+                  <div className="sitecolor h5">matyakubovb@gmail.com</div>
                 </div>
               </div>
 

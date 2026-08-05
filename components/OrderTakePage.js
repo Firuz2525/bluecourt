@@ -6,10 +6,14 @@ import Loading from "./Loading";
 
 export default function OrderTakePage() {
   const tableRef = useRef(null);
+  const contactTableRef = useRef(null); // Ref for contact messages table Excel export
+
   const [checkins, setCheckins] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false); // New: Tracks if the DOM is ready
+  const [contacts, setContacts] = useState([]); // State for Firestore contacts
 
+  const contactRef = collection(db, "contacts"); // Firestore contacts collection
   const checkinRef = collection(db, "checkins");
   const getCheckins = async () => {
     setLoading(true);
@@ -18,12 +22,62 @@ export default function OrderTakePage() {
       const fileteredData = data.docs.map((doc) => ({
         ...doc.data(),
       }));
+      // Fetch contacts collection data alongside check-ins
+      const contactData = await getDocs(contactRef);
+      const filteredContacts = contactData.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
       setLoading(false);
       setCheckins(fileteredData);
+      setContacts(filteredContacts);
       setTimeout(() => setIsLoaded(true), 500);
     } catch (err) {
       console.error(err);
       setLoading(false);
+    }
+  };
+
+  const deleteAllContacts = async () => {
+    // 1. Create the condition: Only proceed if the user clicks 'OK'
+    const isConfirmed = window.confirm(
+      "Are you sure you want to delete ALL check-in records? This action cannot be undone."
+    );
+
+    if (isConfirmed) {
+      setLoading(true);
+      try {
+        const querySnapshot = await getDocs(contactRef);
+
+        // Check if there is actually anything to delete
+        if (querySnapshot.empty) {
+          alert("The database is already empty.");
+          setLoading(false);
+          return;
+        }
+
+        const batch = writeBatch(db);
+        querySnapshot.forEach((doc) => {
+          batch.delete(doc.ref);
+        });
+
+        await batch.commit();
+
+        // 2. Success Alert
+        alert("All records have been successfully cleared.");
+
+        setCheckins([]);
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+        // 3. Error Alert
+        alert("Failed to delete records. Check your permissions.");
+        setLoading(false);
+      }
+    } else {
+      // User clicked 'Cancel'
+      console.log("Delete action cancelled by user.");
     }
   };
   const deleteAllCheckins = async () => {
@@ -76,6 +130,76 @@ export default function OrderTakePage() {
       {!loading ? (
         <>
           <div className="d-flex justify-content-between align-items-center mb-3">
+            <h3 className="mb-0">MESSAGES</h3>
+            <div className="btn-group">
+              {/* FIX: Only render the Excel component if isLoaded is true 
+                and the tableRef actually has the table in it.
+              */}
+              {isLoaded && tableRef.current && contacts.length > 0 ? (
+                <DownloadTableExcel
+                  filename={`Checkins_${new Date().toLocaleDateString()}`}
+                  sheet="Checkins"
+                  currentTableRef={contactTableRef.current}
+                >
+                  <button className="btn btn-outline-success">
+                    <i className="fas fa-file-excel me-2"></i> Export to Excel
+                  </button>
+                </DownloadTableExcel>
+              ) : (
+                <button className="btn btn-outline-secondary" disabled>
+                  Preparing Excel...
+                </button>
+              )}
+
+              <button
+                onClick={deleteAllContacts}
+                className="btn btn-outline-danger ms-2"
+              >
+                <i className="fas fa-trash-alt me-2"></i> Clear All Data
+              </button>
+            </div>
+          </div>
+
+          <div className="table-responsive mb-5">
+            <table
+              ref={contactTableRef}
+              className="table table-striped table-bordered align-middle"
+            >
+              <thead className="table-dark">
+                <tr>
+                  <th scope="col" style={{ width: "50px" }}>
+                    #
+                  </th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Subject</th>
+                  <th scope="col">Message</th>
+                </tr>
+              </thead>
+              <tbody>
+                {contacts.length > 0 ? (
+                  contacts.map((contact, i) => (
+                    <tr key={contact.id || i}>
+                      <td className="fw-bold">{i + 1}</td>
+                      <td>{contact.name || "N/A"}</td>
+                      <td>{contact.email || "N/A"}</td>
+                      <td>{contact.number || "N/A"}</td>
+                      <td>{contact.subject || "N/A"}</td>
+                      <td>{contact.message || "N/A"}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="6" className="text-center py-4 text-muted">
+                      No contact messages found in the database.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+          <div className="d-flex justify-content-between align-items-center mb-3">
             <h3 className="mb-0">Hotel Check-ins</h3>
             <div className="btn-group">
               {/* FIX: Only render the Excel component if isLoaded is true 
@@ -105,7 +229,6 @@ export default function OrderTakePage() {
               </button>
             </div>
           </div>
-
           <div className="table-responsive">
             <table
               ref={tableRef}

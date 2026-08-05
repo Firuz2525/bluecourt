@@ -3,6 +3,8 @@ import Footer from "./Footer";
 import Header from "./Header";
 import sendMessageToTelegram from "./msgToBot";
 import { useTranslations } from "next-intl";
+import { db } from "../config/firebase-config"; // Import your initialized Firestore instance
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 const Getintouch = () => {
   const t = useTranslations("GetInTouch");
@@ -22,10 +24,54 @@ const Getintouch = () => {
     }));
   };
 
-  const handleMsgToBot = () => {
-    sendMessageToTelegram(
-      `Get In Touch: ${formData.name}, ${formData.email}, ${formData.number}, ${formData.subject}: ${formData.message}`
-    );
+  const handleMsgToBot = async () => {
+    // 1. Validation Conditions
+    if (!formData.name || !formData.name.trim()) {
+      alert("Please enter your name.");
+      return;
+    }
+
+    if (!formData.email || !formData.email.trim()) {
+      alert("Please enter your email address.");
+      return;
+    }
+
+    if (!formData.number || !formData.number.trim()) {
+      alert("Please enter your contact number.");
+      return;
+    }
+
+    if (!formData.subject || !formData.subject.trim()) {
+      alert("Please enter a subject.");
+      return;
+    }
+
+    if (!formData.message || !formData.message.trim()) {
+      alert("Please write your message.");
+      return;
+    }
+    try {
+      // 1. Save data to Firebase Firestore
+      await addDoc(collection(db, "contacts"), {
+        name: formData.name,
+        email: formData.email,
+        number: formData.number,
+        subject: formData.subject,
+        message: formData.message,
+        createdAt: serverTimestamp(), // Automatically attaches server date/time
+      });
+
+      // 2. Send Telegram notification
+      // sendMessageToTelegram(
+      //   `Get In Touch: ${formData.name}, ${formData.email}, ${formData.number}, ${formData.subject}: ${formData.message}`
+      // );
+
+      console.log(
+        "Message successfully saved to Firestore and sent to Telegram."
+      );
+    } catch (error) {
+      console.error("Error saving message to Firestore:", error);
+    }
   };
   function createGoogleMap2zLabel(latDMS, lngDMS) {
     // 1. Join latitude and longitude into Google's raw text label format
@@ -46,7 +92,7 @@ const Getintouch = () => {
 
   // Usage Example: vertical: 07.05  horizontal: 49.7 went right
   const label = createGoogleMap2zLabel("39°39'07.05\"N", "66°58'49.7\"E");
-  console.log(label);
+  // console.log(label);
   // Output: MznCsDM5JzA3LjciTiA2NsKwNTgnNDQuNiJF
   //  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1085.8095782220123!2d66.97977704198848!3d39.651726324102114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2z
   // MznCsDM5JzA3LjA1Ik4gNjbCsDU4JzQ5LjciRQ
@@ -70,6 +116,7 @@ const Getintouch = () => {
                 <div className="d-flex flex-column">
                   <div className="h5">{t("reservation")}</div>
                   <div className="sitecolor h5">+81 80 6549 2181</div>
+                  <div className="sitecolor h5">+998 97 578 4402</div>
                 </div>
               </div>
 
@@ -77,7 +124,7 @@ const Getintouch = () => {
                 <i className="fas fa-envelope h1 checkicon sitecolor"></i>
                 <div className="d-flex flex-column">
                   <div className="h5">{t("emailInfo")}</div>
-                  <div className="sitecolor h5">info@bluecourt.uz</div>
+                  <div className="sitecolor h5">mbobomurod@gmail.com</div>
                 </div>
               </div>
 
@@ -86,7 +133,10 @@ const Getintouch = () => {
                   <i className="fas fa-map-marked-alt h1 checkicon sitecolor"></i>
                   <div className="d-flex flex-column">
                     <div className="h5 mb-0">{t("addressLabel")}</div>
-                    <div className="sitecolor h5">{t("fullAddress")}</div>
+                    <div className="sitecolor h5">
+                      6, Gani Abdullo street, Samarkand city, Samarkand,
+                      Uzbekistan
+                    </div>
                   </div>
                 </div>
 
@@ -172,7 +222,7 @@ const Getintouch = () => {
                 <input
                   type="button"
                   onClick={handleMsgToBot}
-                  className="contactinput checkinbtn letterspace px-3"
+                  className="checkinbtn  letterspace px-3"
                   value={t("sendButton")}
                 />
               </>

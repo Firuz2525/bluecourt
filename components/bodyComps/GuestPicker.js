@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export default function GuestPicker({
   label = "ADULTS",
-  placeholder = "Select Adults",
+  placeholder,
   value,
   person,
   singularLabel = "Guest",

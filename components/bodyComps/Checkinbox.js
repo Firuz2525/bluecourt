@@ -135,6 +135,7 @@ export default function Checkinbox() {
                   />
                   <GuestPicker
                     label="Guests"
+                    placeholder={"Select Adults"}
                     singularLabel="Adult"
                     pluralLabel="Adults"
                     value={adult}
@@ -144,6 +145,7 @@ export default function Checkinbox() {
                   />
                   <GuestPicker
                     label="Children"
+                    placeholder={"Select Children"}
                     singularLabel="Child"
                     pluralLabel="Children"
                     value={child}
@@ -151,93 +153,6 @@ export default function Checkinbox() {
                     min={1}
                     max={9}
                   />
-                  {/* <input
-                    type={from ? "date" : "text"}
-                    onFocus={(e) => (e.target.type = "date")}
-                    onBlur={(e)  => {
-                      if (!e.target.value) e.target.type = "text";
-                    }}
-                    id="checkin"
-                    className="checkin"
-                    placeholder={t("placeholderCheckIn")}
-                    value={from}
-                    onChange={(e) => setFrom(e.target.value)}
-                  /> */}
-
-                  {/* CHECK OUT INPUT */}
-                  {/* <input
-                    type={to ? "date" : "text"}
-                    onFocus={(e) => (e.target.type = "date")}
-                    onBlur={(e) => {
-                      if (!e.target.value) e.target.type = "text";
-                    }}
-                    id="checkout"
-                    className="checkin"
-                    placeholder={t("placeholderCheckOut")}
-                    value={to}
-                    onChange={(e) => setTo(e.target.value)}
-                  /> */}
-                  {/* <input
-                    type="number"
-                    id="adults"
-                    placeholder={t("placeholderAdults")}
-                    name="number"
-                    value={adult}
-                    onChange={(e) => {
-                      if (e.target.value >= 1) {
-                        setAdult(Number(e.target.value));
-                      } else {
-                        setAdult("");
-                      }
-                    }}
-                  />
-                  <input
-                    type="number"
-                    id="children"
-                    placeholder={t("placeholderChildren")}
-                    name="number"
-                    value={child}
-                    onChange={(e) => {
-                      if (e.target.value >= 1) {
-                        setChild(Number(e.target.value));
-                      } else {
-                        setChild("");
-                      }
-                    }}
-                  /> */}
-                  {/* ADULTS SELECT */}
-                  {/* <select
-                    className="selection"
-                    id="adults"
-                    value={adult}
-                    onChange={(e) => setAdult(e.target.value)}
-                  >
-                    <option value="" disabled hidden>
-                      {t("placeholderAdults")}
-                    </option>
-                    {[...Array(9)].map((_, i) => (
-                      <option key={i + 1} value={i + 1}>
-                        {i + 1}
-                      </option>
-                    ))}
-                  </select> */}
-
-                  {/* CHILDREN SELECT */}
-                  {/* <select
-                    id="children"
-                    className="selection"
-                    value={child}
-                    onChange={(e) => setChild(e.target.value)}
-                  >
-                    <option value="" disabled hidden>
-                      {t("placeholderChildren")}
-                    </option>
-                    {[...Array(9)].map((_, i) => (
-                      <option key={i + 1} value={i + 1}>
-                        {i + 1}
-                      </option>
-                    ))}
-                  </select> */}
 
                   <input
                     type="button"
